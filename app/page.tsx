@@ -1,14 +1,64 @@
 'use client';
 
-import { useState, useMemo } from 'react';
-import { projects, statusConfig } from '@/data/projects';
+import { useState, useMemo, useEffect, useCallback } from 'react';
+import { statusConfig as defaultStatusConfig, categoryConfig as defaultCategoryConfig } from '@/data/projects';
 import ProjectCard from '@/components/ProjectCard';
 import FilterBar from '@/components/FilterBar';
 
+interface Project {
+  id: string;
+  emoji: string;
+  name: string;
+  status: 'active' | 'progress' | 'research' | 'completed';
+  category: 'tech' | 'content' | 'research' | 'product';
+  progress: number;
+  description: string;
+  blockers: string[];
+  lastUpdated: string;
+  links: {
+    github?: string;
+    docs?: string;
+    nextStep?: string;
+  };
+  tasks?: Array<{
+    id: string;
+    title: string;
+    status: 'pending' | 'in-progress' | 'done';
+    priority: 'low' | 'medium' | 'high';
+    createdAt: string;
+    updatedAt: string;
+    notes?: string;
+  }>;
+}
+
 export default function Home() {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [lastSync, setLastSync] = useState<string | null>(null);
   const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [darkMode, setDarkMode] = useState(false);
+
+  const fetchProjects = useCallback(async () => {
+    try {
+      const res = await fetch('/api/projects', { cache: 'no-store' });
+      if (!res.ok) throw new Error('API error');
+      const data = await res.json();
+      setProjects(data.projects || data);
+      setLastSync(data.lastSync || new Date().toISOString());
+    } catch (err) {
+      console.error('Error fetching projects:', err);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchProjects();
+    // Auto-refresh cada 30 segundos
+    const interval = setInterval(fetchProjects, 30000);
+    return () => clearInterval(interval);
+  }, [fetchProjects]);
 
   // Filter projects
   const filteredProjects = useMemo(() => {
@@ -17,7 +67,7 @@ export default function Home() {
       const categoryMatch = !selectedCategory || project.category === selectedCategory;
       return statusMatch && categoryMatch;
     });
-  }, [selectedStatus, selectedCategory]);
+  }, [projects, selectedStatus, selectedCategory]);
 
   // Calculate stats
   const stats = {
@@ -26,55 +76,49 @@ export default function Home() {
     progress: projects.filter(p => p.status === 'progress').length,
     research: projects.filter(p => p.status === 'research').length,
     completed: projects.filter(p => p.status === 'completed').length,
-    avgProgress: Math.round(projects.reduce((acc, p) => acc + p.progress, 0) / projects.length),
+    avgProgress: projects.length
+      ? Math.round(projects.reduce((acc, p) => acc + p.progress, 0) / projects.length)
+      : 0,
   };
 
   return (
-    <div className={`min-h-screen transition-colors duration-200 ${darkMode ? 'dark' : ''}`}>
-      <div className="bg-gradient-to-br from-gray-100 to-gray-200 dark:from-dark-bg dark:to-dark-surface">
-        
+    <div className={darkMode ? 'dark' : ''}>
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
         {/* Header */}
-        <header className="sticky top-0 z-50 bg-white dark:bg-dark-surface shadow-lg border-b border-gray-200 dark:border-dark-border">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+        <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-3xl sm:text-4xl font-black text-gray-900 dark:text-white mb-1">
-                  🎯 Proyectos de Álvaro
+                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  🚀 Projects Dashboard
                 </h1>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Dashboard interactivo de estado - {stats.total} proyectos activos
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                  Álvaro Gaviño González · Open Claw
                 </p>
               </div>
-              <button
-                onClick={() => setDarkMode(!darkMode)}
-                className="p-2 rounded-lg bg-gray-100 dark:bg-dark-bg hover:bg-gray-200 dark:hover:bg-dark-border transition-colors"
-                title="Toggle dark mode"
-              >
-                {darkMode ? '☀️' : '🌙'}
-              </button>
-            </div>
-
-            {/* Quick Stats */}
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mt-6">
-              <div className="bg-green-50 dark:bg-green-900 rounded-lg p-3 text-center">
-                <p className="text-2xl font-bold text-green-600 dark:text-green-400">{stats.active}</p>
-                <p className="text-xs text-green-700 dark:text-green-300 font-semibold">Activos</p>
-              </div>
-              <div className="bg-yellow-50 dark:bg-yellow-900 rounded-lg p-3 text-center">
-                <p className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">{stats.progress}</p>
-                <p className="text-xs text-yellow-700 dark:text-yellow-300 font-semibold">En Progreso</p>
-              </div>
-              <div className="bg-blue-50 dark:bg-blue-900 rounded-lg p-3 text-center">
-                <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">{stats.research}</p>
-                <p className="text-xs text-blue-700 dark:text-blue-300 font-semibold">Research</p>
-              </div>
-              <div className="bg-purple-50 dark:bg-purple-900 rounded-lg p-3 text-center">
-                <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">{stats.completed}</p>
-                <p className="text-xs text-purple-700 dark:text-purple-300 font-semibold">Completados</p>
-              </div>
-              <div className="bg-indigo-50 dark:bg-indigo-900 rounded-lg p-3 text-center">
-                <p className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">{stats.avgProgress}%</p>
-                <p className="text-xs text-indigo-700 dark:text-indigo-300 font-semibold">Promedio</p>
+              <div className="flex items-center gap-4">
+                {/* Stats */}
+                <div className="hidden sm:flex gap-4 text-sm">
+                  <span className="text-green-600 font-medium">{stats.active} activos</span>
+                  <span className="text-yellow-600 font-medium">{stats.progress} en progreso</span>
+                  <span className="text-purple-600 font-medium">{stats.completed} completados</span>
+                  <span className="text-gray-500 font-medium">~{stats.avgProgress}% avg</span>
+                </div>
+                {/* Refresh button */}
+                <button
+                  onClick={fetchProjects}
+                  className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-sm px-3 py-1 rounded border border-gray-200 dark:border-gray-600 hover:border-gray-400 transition-colors"
+                  title="Refrescar datos"
+                >
+                  🔄
+                </button>
+                {/* Dark mode toggle */}
+                <button
+                  onClick={() => setDarkMode(!darkMode)}
+                  className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                >
+                  {darkMode ? '☀️' : '🌙'}
+                </button>
               </div>
             </div>
           </div>
@@ -82,9 +126,8 @@ export default function Home() {
 
         {/* Main Content */}
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-          
           {/* Filters */}
-          <FilterBar 
+          <FilterBar
             selectedStatus={selectedStatus}
             selectedCategory={selectedCategory}
             onStatusChange={setSelectedStatus}
@@ -93,12 +136,17 @@ export default function Home() {
 
           {/* Results Counter */}
           <div className="mb-6 text-sm text-gray-600 dark:text-gray-400">
-            <span className="font-semibold text-gray-900 dark:text-white">{filteredProjects.length}</span> 
-            {' '}proyectos mostrados {filteredProjects.length !== stats.total && '(filtrados)'}
+            <span className="font-semibold text-gray-900 dark:text-white">{filteredProjects.length}</span>
+            {' '}proyectos mostrados {filteredProjects.length !== stats.total && `(filtrados)`}
           </div>
 
-          {/* Projects Grid */}
-          {filteredProjects.length > 0 ? (
+          {/* Loading state */}
+          {loading ? (
+            <div className="text-center py-12">
+              <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-200 border-t-blue-600 mb-4"></div>
+              <p className="text-gray-500 dark:text-gray-400">Cargando proyectos...</p>
+            </div>
+          ) : filteredProjects.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {filteredProjects.map(project => (
                 <ProjectCard key={project.id} project={project} />
@@ -115,8 +163,16 @@ export default function Home() {
           {/* Footer */}
           <footer className="mt-12 pt-8 border-t border-gray-300 dark:border-dark-border">
             <div className="text-center text-sm text-gray-600 dark:text-gray-400">
-              <p>🚀 Dashboard de Proyectos de Álvaro Gaviño González</p>
-              <p className="mt-1">Última sincronización: {new Date().toLocaleDateString('es-ES')}</p>
+              <p>🦞 Dashboard de Proyectos de Álvaro Gaviño González</p>
+              <p className="mt-1">
+                Última sincronización:{' '}
+                {lastSync
+                  ? new Date(lastSync).toLocaleString('es-ES')
+                  : new Date().toLocaleString('es-ES')}
+              </p>
+              <p className="mt-1 text-xs text-gray-400">
+                Se actualiza automáticamente cada 30 segundos
+              </p>
             </div>
           </footer>
         </main>
