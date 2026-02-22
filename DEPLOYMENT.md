@@ -1,4 +1,24 @@
-# 🚀 Guía de Deployment en Railway
+# 🚀 Guía de Deployment
+
+## Cloud Run (producción actual)
+
+Script existente:
+
+```bash
+cd /home/alvaro/.openclaw/workspace/projects-dashboard
+./scripts/cloudrun-deploy-projects-dashboard.sh boatcheckpro-20260222-21988 europe-west1 projects-dashboard
+```
+
+Verificación rápida:
+
+```bash
+npm run build
+curl -I https://projects-dashboard-<hash>-ew.a.run.app
+```
+
+> Nota: la persistencia JSON en Cloud Run es MVP (filesystem efímero). Para producción robusta mover `benchmark-projects` a DB/Storage.
+
+## Railway (alternativa)
 
 ## Opción 1: Usando Railway CLI (Recomendado)
 

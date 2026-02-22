@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "lastSync": "2026-02-22T00:00:00.000Z",
+  "projects": [
+    {
+      "id": "cl-santander-full-2026",
+      "name": "Chile · Santander · Benchmark Full",
+      "clientBankId": "santander",
+      "market": "Chile",
+      "competitorBankIds": ["bchile", "bci", "scotiabank", "itau", "bEstado", "bice", "security", "falabella", "consorcio"],
+      "segments": ["retail", "pyme", "empresa", "cib"],
+      "status": "active",
+      "notes": "Proyecto inicial benchmark-chile",
+      "createdAt": "2026-02-22T00:00:00.000Z",
+      "updatedAt": "2026-02-22T00:00:00.000Z"
+    }
+  ]
+}

@@ -1,12 +1,12 @@
 'use client';
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import {
   Building2, CreditCard, Landmark, TrendingUp, BarChart3, Shield,
   Store, Briefcase, Wallet, Globe, ChevronDown, ChevronRight, Search,
   Target, AlertCircle, LineChart, Layers, Building, Factory, Banknote,
   HandCoins, Receipt, BadgeDollarSign, ExternalLink, FolderOpen,
   Plus, Save, Trash2, AlertTriangle, ArrowUpRight, ArrowDownRight,
-  CircleDollarSign, Zap, TrendingDown, ChevronUp, Info, X
+  CircleDollarSign, Zap, TrendingDown, ChevronUp, Info, X, ArrowRight
 } from "lucide-react";
 
 // ═══════════════════════════════════════════════════════════════
@@ -27,30 +27,33 @@ const AM = {
 
 // ═══ BANK DEFINITIONS WITH SVG LOGOS ═══
 const BANKS = [
-  { id: "santander", name: "Santander", short: "SAN", color: "#EC0000", bg: "#EC0000", text: "#FFF", isClient: true },
-  { id: "bchile", name: "Banco de Chile", short: "BCH", color: "#00205B", bg: "#00205B", text: "#FFF" },
-  { id: "bci", name: "BCI", short: "BCI", color: "#FF6600", bg: "#FF6600", text: "#FFF" },
-  { id: "scotiabank", name: "Scotiabank", short: "SCO", color: "#EC111A", bg: "#EC111A", text: "#FFF" },
-  { id: "itau", name: "Itaú", short: "ITÚ", color: "#003778", bg: "#FF6200", text: "#FFF" },
-  { id: "bEstado", name: "BancoEstado", short: "BES", color: "#009B3A", bg: "#009B3A", text: "#FFF" },
+  { id: "santander", name: "Santander", short: "SAN", color: "#EC0000", bg: "#EC0000", text: "#FFF", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Banco_Santander_Logotipo.svg" },
+  { id: "bchile", name: "Banco de Chile", short: "BCH", color: "#00205B", bg: "#00205B", text: "#FFF", logo: "https://upload.wikimedia.org/wikipedia/commons/d/d8/Banco_de_Chile_logo.svg" },
+  { id: "bci", name: "BCI", short: "BCI", color: "#FF6600", bg: "#FF6600", text: "#FFF", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4f/Logo_BCI.svg" },
+  { id: "scotiabank", name: "Scotiabank", short: "SCO", color: "#EC111A", bg: "#EC111A", text: "#FFF", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f6/Scotiabank_logo.svg" },
+  { id: "itau", name: "Itaú", short: "ITÚ", color: "#003778", bg: "#FF6200", text: "#FFF", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c4/Ita%C3%BA_Unibanco_logo_2023.svg" },
+  { id: "bEstado", name: "BancoEstado", short: "BES", color: "#009B3A", bg: "#009B3A", text: "#FFF", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7c/BancoEstado_logo.svg" },
   { id: "bice", name: "BICE", short: "BIC", color: "#1A1F71", bg: "#1A1F71", text: "#FFF" },
   { id: "security", name: "Security", short: "SEC", color: "#003366", bg: "#003366", text: "#FFF" },
-  { id: "falabella", name: "Falabella", short: "FAL", color: "#8CC63F", bg: "#8CC63F", text: "#FFF" },
+  { id: "falabella", name: "Falabella", short: "FAL", color: "#8CC63F", bg: "#8CC63F", text: "#FFF", logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/Banco_Falabella_logo.svg" },
   { id: "consorcio", name: "Consorcio", short: "CON", color: "#7B2D8E", bg: "#7B2D8E", text: "#FFF" },
 ];
 
 function BankBadge({ bank, size = 28 }) {
+  const [failed, setFailed] = useState(false);
   return (
     <div style={{
       width: size, height: size, borderRadius: 5,
       background: bank.bg, color: bank.text,
       display: "flex", alignItems: "center", justifyContent: "center",
       fontSize: size * 0.32, fontWeight: 800, letterSpacing: -0.5,
-      flexShrink: 0, lineHeight: 1,
+      flexShrink: 0, lineHeight: 1, overflow: "hidden",
       border: bank.isClient ? "2px solid #EC0000" : `1px solid ${bank.bg}88`,
       boxShadow: bank.isClient ? "0 0 8px #EC000044" : undefined,
     }}>
-      {bank.short}
+      {bank.logo && !failed ? (
+        <img src={bank.logo} alt={bank.name} style={{ width: "100%", height: "100%", objectFit: "contain", background: "#fff", padding: 2 }} onError={() => setFailed(true)} />
+      ) : bank.short}
     </div>
   );
 }
@@ -256,6 +259,16 @@ function fmt(v, u) {
   return String(v);
 }
 
+const METRIC_HELP = [
+  "UF/mes: cargo mensual expresado en Unidad de Fomento.",
+  "%: porcentaje sobre monto, saldo o venta según producto.",
+  "pb: puntos base (100 pb = 1%).",
+  "Percentil: posición relativa del banco entre competidores.",
+  "Ranking (x/y): puesto absoluto en el comparativo.",
+  "Invert logic: en métricas de beneficio mayor valor es mejor.",
+  "Gap%: diferencia porcentual del cliente versus benchmark líder.",
+];
+
 // ═══ OPPORTUNITIES ENGINE ═══
 function computeOpportunities(clientId, allProducts) {
   const opps = [];
@@ -296,11 +309,23 @@ export default function App() {
   const [search, setSearch] = useState("");
   const [detailProduct, setDetailProduct] = useState(null);
 
-  // Project system (in-memory)
-  const [projects, setProjects] = useState([
-    { id: 1, name: "Santander Chile — Full Benchmark", client: "santander", date: "2026-02-22", segments: ["retail", "pyme", "empresa", "cib"], status: "active" }
-  ]);
-  const [activeProject, setActiveProject] = useState(1);
+  const [projects, setProjects] = useState([]);
+  const [activeProject, setActiveProject] = useState(null);
+  const [showHelp, setShowHelp] = useState(false);
+
+  const loadProjects = useCallback(async () => {
+    try {
+      const res = await fetch('/api/benchmark/projects', { cache: 'no-store' });
+      const data = await res.json();
+      const list = data.projects || [];
+      setProjects(list);
+      setActiveProject(prev => prev || list[0]?.id || null);
+    } catch (e) {
+      console.error('Cannot load benchmark projects', e);
+    }
+  }, []);
+
+  useEffect(() => { loadProjects(); }, [loadProjects]);
 
   const products = PRODUCTS[segment] || [];
   const filtered = useMemo(() => {
@@ -310,30 +335,45 @@ export default function App() {
     })).filter(c => c.products.length > 0);
   }, [products, search]);
 
-  const activeBanks = BANKS.filter(b => selectedBanks.includes(b.id));
+  const activeProjectData = projects.find(p => p.id === activeProject) || projects[0] || null;
+  const clientId = activeProjectData?.clientBankId || activeProjectData?.client || 'santander';
+  const banksWithClient = useMemo(() => BANKS.map(b => ({ ...b, isClient: b.id === clientId })), [clientId]);
+  const activeBanks = banksWithClient.filter(b => selectedBanks.includes(b.id));
   const toggleCat = i => setExpandedCats(p => { const s = new Set(p); s.has(i) ? s.delete(i) : s.add(i); return s; });
 
   const stats = useMemo(() => {
     let lo = 0, hi = 0, tot = 0;
     products.forEach(c => c.products.forEach(p => {
-      const pos = getPosition("santander", p.fees);
+      const pos = getPosition(clientId, p.fees);
       if (!pos) return;
       tot++; if (pos.percentile <= 33) lo++; if (pos.percentile >= 67) hi++;
     }));
     return { lo, hi, mid: tot - lo - hi, tot };
-  }, [products]);
+  }, [products, clientId]);
 
-  const opportunities = useMemo(() => computeOpportunities("santander", PRODUCTS), []);
+  const opportunities = useMemo(() => computeOpportunities(clientId, PRODUCTS), [clientId]);
   const oppsBySeg = useMemo(() => {
     const m = {};
     opportunities.forEach(o => { if (!m[o.segment]) m[o.segment] = []; m[o.segment].push(o); });
     return m;
   }, [opportunities]);
 
-  const addProject = () => {
+  const addProject = async () => {
     const id = Date.now();
-    setProjects(p => [...p, { id, name: "Nuevo Proyecto", client: "santander", date: new Date().toISOString().slice(0,10), segments: ["retail"], status: "draft" }]);
-    setActiveProject(id);
+    const draft = { id: `project-${id}`, name: "Nuevo Proyecto", clientBankId: "santander", market: "Chile", competitorBankIds: BANKS.filter(x=>x.id!=="santander").map(x=>x.id), segments: ["retail"], status: "draft" };
+    await fetch('/api/benchmark/projects', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(draft) });
+    await loadProjects();
+    setActiveProject(draft.id);
+  };
+
+  const saveProject = async (project) => {
+    await fetch('/api/benchmark/projects', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(project) });
+    await loadProjects();
+  };
+
+  const deleteProject = async (projectId) => {
+    await fetch(`/api/benchmark/projects/${projectId}`, { method: 'DELETE' });
+    await loadProjects();
   };
 
   // ═══ DETAIL PANEL ═══
@@ -355,7 +395,7 @@ export default function App() {
             .filter(([,v]) => v !== null && v !== undefined)
             .sort(([,a],[,b]) => product.invert ? b - a : a - b)
             .map(([bankId, val], i) => {
-              const bank = BANKS.find(b => b.id === bankId);
+              const bank = banksWithClient.find(b => b.id === bankId);
               if (!bank) return null;
               const pos = getPosition(bankId, product.fees);
               return (
@@ -414,10 +454,13 @@ export default function App() {
             <div style={{ background: "#EC000010", border: "1px solid #EC000033", borderRadius: 6, padding: "8px 14px", display: "flex", alignItems: "center", gap: 8 }}>
               <Target size={14} color="#EC0000" />
               <div>
-                <div style={{ fontSize: 8, color: AM.gray400, textTransform: "uppercase", letterSpacing: 1 }}>Cliente</div>
-                <div style={{ fontSize: 13, fontWeight: 700, color: "#EC0000" }}>Santander Chile</div>
+                <div style={{ fontSize: 8, color: AM.gray400, textTransform: "uppercase", letterSpacing: 1 }}>Cliente / Proyecto</div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: "#EC0000" }}>{banksWithClient.find(b=>b.id===clientId)?.name || clientId}</div>
               </div>
             </div>
+            <button onClick={() => setShowHelp(v => !v)} style={{ padding: "8px 12px", border: `1px solid ${AM.borderLight}`, borderRadius: 6, background: AM.navyLight, color: AM.gray300, fontSize: 11, cursor: "pointer" }}>
+              <Info size={12} style={{ display: "inline", marginRight: 6 }} /> Métricas
+            </button>
           </div>
         </div>
       </div>
@@ -440,6 +483,14 @@ export default function App() {
       </div>
 
       <div style={{ maxWidth: 1440, margin: "0 auto", padding: "16px 28px" }}>
+        {showHelp && (
+          <div style={{ marginBottom: 12, background: AM.navyLight, border: `1px solid ${AM.borderLight}`, borderRadius: 6, padding: "10px 14px" }}>
+            <div style={{ fontSize: 10, color: AM.gold, textTransform: "uppercase", marginBottom: 6 }}>Guía de métricas y unidades</div>
+            <ul style={{ margin: 0, paddingLeft: 16, color: AM.gray300, fontSize: 11, lineHeight: 1.5 }}>
+              {METRIC_HELP.map((line, i) => <li key={i}>{line}</li>)}
+            </ul>
+          </div>
+        )}
 
         {/* ═══ BENCHMARK VIEW ═══ */}
         {view === "benchmark" && (
@@ -477,7 +528,7 @@ export default function App() {
             {/* Bank selector + search */}
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14, flexWrap: "wrap", gap: 8 }}>
               <div style={{ display: "flex", gap: 3, flexWrap: "wrap" }}>
-                {BANKS.map(b => {
+                {banksWithClient.map(b => {
                   const on = selectedBanks.includes(b.id);
                   return (
                     <button key={b.id} onClick={() => setSelectedBanks(p => on ? p.filter(x=>x!==b.id) : [...p, b.id])}
@@ -510,7 +561,7 @@ export default function App() {
                     <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                       <div style={{ display: "flex", gap: 2 }}>
                         {cat.products.map((p, pi) => {
-                          const pos = getPosition("santander", p.fees);
+                          const pos = getPosition(clientId, p.fees);
                           if (!pos) return <div key={pi} style={{ width: 5, height: 5, borderRadius: 1, background: AM.gray600 }} />;
                           return <div key={pi} style={{ width: 5, height: 5, borderRadius: 1, background: posColor(pos.percentile, p.invert) }} />;
                         })}
@@ -538,7 +589,7 @@ export default function App() {
                         </thead>
                         <tbody>
                           {cat.products.map((p, pi) => {
-                            const santPos = getPosition("santander", p.fees);
+                            const santPos = getPosition(clientId, p.fees);
                             const inv = !!p.invert;
                             return (
                               <tr key={pi} style={{ borderBottom: `1px solid ${AM.border}`, cursor: "pointer" }}
@@ -551,6 +602,11 @@ export default function App() {
                                     {p.sources?.length > 0 && <ExternalLink size={10} color={AM.tealLight} style={{ flexShrink: 0, opacity: 0.6 }} />}
                                   </div>
                                   <div style={{ fontSize: 9, color: AM.gray500, marginTop: 2, lineHeight: 1.3, maxWidth: 260 }}>{p.notes}</div>
+                                  {p.sources?.[0] && SOURCES[p.sources[0]] && (
+                                    <a href={SOURCES[p.sources[0]].url} target="_blank" rel="noreferrer" onClick={(e)=>e.stopPropagation()} style={{ fontSize: 9, color: AM.tealLight, textDecoration: 'none' }}>
+                                      Fuente: {SOURCES[p.sources[0]].name}
+                                    </a>
+                                  )}
                                 </td>
                                 <td style={{ padding: "9px 4px", color: AM.gray500, textAlign: "center", fontSize: 8, fontWeight: 500 }}>{p.unit}</td>
                                 {activeBanks.map(b => {
@@ -640,7 +696,7 @@ export default function App() {
                   </div>
                   <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                     {opps.map((o, i) => {
-                      const bestBank = BANKS.find(b => b.id === o.bestBank);
+                      const bestBank = banksWithClient.find(b => b.id === o.bestBank);
                       return (
                         <div key={i}
                           onClick={() => {
@@ -658,7 +714,7 @@ export default function App() {
                           </div>
                           <div style={{ textAlign: "center", minWidth: 70 }}>
                             <div style={{ fontSize: 12, fontWeight: 700, color: "#EC0000" }}>{fmt(o.clientVal, o.unit)}</div>
-                            <div style={{ fontSize: 8, color: AM.gray500 }}>Santander</div>
+                            <div style={{ fontSize: 8, color: AM.gray500 }}>{banksWithClient.find(b=>b.id===clientId)?.name || 'Cliente'}</div>
                           </div>
                           <ArrowRight size={12} color={AM.gray500} />
                           <div style={{ textAlign: "center", minWidth: 70 }}>
@@ -700,7 +756,7 @@ export default function App() {
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 12 }}>
               {projects.map(p => {
-                const clientBank = BANKS.find(b => b.id === p.client);
+                const clientBank = banksWithClient.find(b => b.id === (p.clientBankId || p.client));
                 const isActive = activeProject === p.id;
                 return (
                   <div key={p.id}
@@ -712,7 +768,7 @@ export default function App() {
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 10 }}>
                       <div>
                         <div style={{ fontSize: 14, fontWeight: 600, color: AM.white }}>{p.name}</div>
-                        <div style={{ fontSize: 10, color: AM.gray400, marginTop: 2 }}>{p.date}</div>
+                        <div style={{ fontSize: 10, color: AM.gray400, marginTop: 2 }}>{(p.updatedAt || p.date || '').slice(0,10)}</div>
                       </div>
                       <span style={{ fontSize: 8, padding: "2px 8px", borderRadius: 8, fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.5, background: p.status === "active" ? AM.green + "22" : AM.amber + "22", color: p.status === "active" ? AM.green : AM.amber }}>
                         {p.status}
@@ -721,6 +777,13 @@ export default function App() {
                     <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
                       {clientBank && <BankBadge bank={clientBank} size={22} />}
                       <span style={{ fontSize: 12, color: AM.gray300 }}>{clientBank?.name}</span>
+                    </div>
+                    <div onClick={(e) => e.stopPropagation()} style={{ display: 'flex', gap: 6, alignItems: 'center', marginBottom: 10 }}>
+                      <select value={p.clientBankId || p.client} onChange={(e) => setProjects(list => list.map(x => x.id === p.id ? { ...x, clientBankId: e.target.value } : x))} style={{ background: AM.navy, color: AM.gray300, border: `1px solid ${AM.border}`, borderRadius: 4, fontSize: 10, padding: '4px 6px' }}>
+                        {BANKS.map(b => <option key={b.id} value={b.id}>{b.name}</option>)}
+                      </select>
+                      <button onClick={() => saveProject(p)} style={{ background: AM.navy, color: AM.gold, border: `1px solid ${AM.gold}66`, borderRadius: 4, padding: '3px 8px', fontSize: 10, cursor: 'pointer' }}><Save size={10} style={{ display: 'inline' }} /> Guardar</button>
+                      <button onClick={() => deleteProject(p.id)} style={{ background: AM.navy, color: AM.redLight, border: `1px solid ${AM.red}66`, borderRadius: 4, padding: '3px 8px', fontSize: 10, cursor: 'pointer' }}><Trash2 size={10} style={{ display: 'inline' }} /> Eliminar</button>
                     </div>
                     <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
                       {p.segments.map(s => {
@@ -766,7 +829,7 @@ export default function App() {
         </div>
         <div style={{ textAlign: "center", padding: "12px 0 24px", fontSize: 8, color: AM.gray600, borderTop: `1px solid ${AM.border}`, marginTop: 6 }}>
           <span style={{ color: AM.goldDim, fontWeight: 600, letterSpacing: 1.5 }}>CONFIDENCIAL</span>
-          {" | "}Alvarez & Marsal · Revenue Improvement Solutions{" | "}Fuentes públicas (CMF, SERNAC, webs bancos){" | "}Feb 2026{" | "}v3 demo
+          {" | "}Alvarez & Marsal · Revenue Improvement Solutions{" | "}Fuentes públicas (CMF, SERNAC, webs bancos){" | "}Logos de bancos: Wikimedia/brand assets (uso referencial con fallback){" | "}Feb 2026{" | "}v3 demo
         </div>
       </div>
 

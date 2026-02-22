@@ -4,6 +4,18 @@ Dashboard visual interactivo que muestra el estado de todos los proyectos de Ál
 
 ## ✨ Características
 
+### Benchmark competitivo (ruta `/benchmark`)
+
+- Flujo multi-cliente: creación/edición de proyectos benchmark por banco cliente y mercado.
+- Persistencia MVP en JSON (`data/benchmark-projects.json`) con estructura preparada para migrar a DB.
+- API dedicada:
+  - `GET/POST/PUT /api/benchmark/projects`
+  - `GET/DELETE /api/benchmark/projects/:id`
+- Visibilidad de fuentes por métrica: enlaces clicables + metadata (tipo de fuente).
+- Explicabilidad de métricas: panel de ayuda con UF/mes, %, pb, percentil, ranking, invert logic y gap%.
+- Logos bancarios con assets públicos (Wikimedia/brand assets) + fallback a iniciales.
+- Ruta de gestión adicional: `/benchmark/manage`.
+
 - **Grid Responsive**: Se adapta automáticamente a 1, 2 o 3 columnas según el tamaño de pantalla
 - **8 Proyectos Integrados**: Todos los proyectos actuales con datos completos
 - **Estado Visual**: Badges para Activo 🟢, Progreso 🟡, Research 🔵, Completado ✅
