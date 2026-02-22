@@ -1,5 +1,6 @@
 import { promises as fs } from 'fs';
 import path from 'path';
+import { projects as defaultProjects, statusConfig as defaultStatusConfig, categoryConfig as defaultCategoryConfig } from '@/data/projects';
 
 // In Railway, we use a writable path. The data file lives alongside the code.
 // For persistence across deploys, Railway needs a volume - but for now we use the runtime filesystem.
@@ -43,12 +44,20 @@ export interface ProjectsData {
 export async function readProjectsData(): Promise<ProjectsData> {
   try {
     const content = await fs.readFile(DATA_FILE, 'utf8');
-    return JSON.parse(content);
+    const parsed = JSON.parse(content);
+
+    return {
+      projects: Array.isArray(parsed.projects) && parsed.projects.length > 0 ? parsed.projects : defaultProjects,
+      statusConfig: parsed.statusConfig && Object.keys(parsed.statusConfig).length ? parsed.statusConfig : defaultStatusConfig,
+      categoryConfig: parsed.categoryConfig && Object.keys(parsed.categoryConfig).length ? parsed.categoryConfig : defaultCategoryConfig,
+      lastSync: parsed.lastSync || new Date().toISOString(),
+    };
   } catch {
     return {
-      projects: [],
-      statusConfig: {},
-      categoryConfig: {},
+      projects: defaultProjects,
+      statusConfig: defaultStatusConfig,
+      categoryConfig: defaultCategoryConfig,
+      lastSync: new Date().toISOString(),
     };
   }
 }
