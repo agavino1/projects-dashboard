@@ -358,6 +358,57 @@ export default function App() {
     return m;
   }, [opportunities]);
 
+  const getSimulatorProductId = (opp) => {
+    const n = (opp.product || '').toLowerCase();
+    const c = (opp.category || '').toLowerCase();
+    if (n.includes('plan básico') && c.includes('cuentas')) return 'r_cc_basico';
+    if (n.includes('plan premium') && c.includes('cuentas')) return 'r_cc_premium';
+    if (n.includes('gold') || n.includes('platinum')) return 'r_tc_gold';
+    if (n.includes('clásica') && c.includes('tarjetas')) return 'r_tc_clasica';
+    if (n.includes('black') || n.includes('infinite')) return 'r_tc_black';
+    if (n.includes('avance efectivo')) return 'r_tc_avance';
+    if (n.includes('internacional') || n.includes('fx markup')) return 'r_tc_fx';
+    if (n.includes('rotativo')) return 'r_tc_rot';
+    if (n.includes('consumo 12m')) return 'r_cred12';
+    if (n.includes('consumo 36m')) return 'r_cred36';
+    if (n.includes('sobregiro') || n.includes('línea de crédito')) return 'r_linea';
+    if (n.includes('automotriz')) return 'r_auto';
+    if (n.includes('tasa fija uf')) return 'r_hip_fija';
+    if (n.includes('tasa mixta')) return 'r_hip_mixta';
+    if (n.includes('ffmm renta fija')) return 'r_ffmm_rf';
+    if (n.includes('ffmm renta variable')) return 'r_ffmm_rv';
+    if (n.includes('corretaje')) return 'r_corretaje';
+    if (n.includes('fraude tc')) return 'r_seg_fraude';
+    if (n.includes('pyme básico')) return 'p_cc_basico';
+    if (n.includes('tef')) return 'p_tef';
+    if (n.includes('capital trabajo')) return 'p_ktrab';
+    if (n.includes('línea de crédito pyme')) return 'p_linea';
+    if (n.includes('factoring')) return 'p_fact';
+    if (n.includes('merchant débito')) return 'p_pos_db';
+    if (n.includes('merchant crédito')) return 'p_pos_cr';
+    if (n.includes('e-commerce gateway')) return 'p_ecomm';
+    if (n.includes('cta. cte. empresa') || n.includes('cta cte empresa')) return 'e_cc';
+    if (n.includes('swift')) return 'e_swift';
+    if (n.includes('bilateral')) return 'e_bilat';
+    if (n.includes('sindicado')) return 'e_sind';
+    if (n.includes('carta de crédito')) return 'e_lc';
+    if (n.includes('fx spot')) return 'e_fx';
+    if (n.includes('m&a advisory')) return 'c_ma';
+    if (n.includes('bonos')) return 'c_bono';
+    if (n.includes('renta fija') && c.includes('markets')) return 'c_rf';
+    if (n.includes('irs')) return 'c_irs';
+    return null;
+  };
+
+  const openSimulatorForOpportunity = (opp) => {
+    const simId = getSimulatorProductId(opp);
+    if (!simId) return;
+    const fee = Number(opp.clientVal);
+    const target = Number(opp.bestVal);
+    const url = `/simulator?product=${encodeURIComponent(simId)}&fee=${encodeURIComponent(fee)}&target=${encodeURIComponent(target)}`;
+    window.location.href = url;
+  };
+
   const addProject = async () => {
     const id = Date.now();
     const draft = { id: `project-${id}`, name: "Nuevo Proyecto", clientBankId: "santander", market: "Chile", competitorBankIds: BANKS.filter(x=>x.id!=="santander").map(x=>x.id), segments: ["retail"], status: "draft" };
@@ -730,6 +781,25 @@ export default function App() {
                           <div style={{ display: "inline-flex", padding: "2px 6px", borderRadius: 3, fontSize: 9, fontWeight: 700, background: posColor(o.percentile, o.inv) + "18", color: posColor(o.percentile, o.inv) }}>
                             {o.position}/{o.total}
                           </div>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              openSimulatorForOpportunity(o);
+                            }}
+                            style={{
+                              padding: "5px 10px",
+                              borderRadius: 4,
+                              border: `1px solid ${AM.tealLight}66`,
+                              background: AM.teal + "22",
+                              color: AM.tealLight,
+                              fontSize: 10,
+                              fontWeight: 600,
+                              cursor: "pointer",
+                              marginLeft: 6,
+                            }}
+                          >
+                            Simular
+                          </button>
                         </div>
                       );
                     })}

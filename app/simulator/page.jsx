@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import {
   TrendingUp, Users, ArrowRight, AlertTriangle,
   Sliders, ChevronDown, ChevronRight, Info, Zap,
@@ -135,6 +135,26 @@ export default function ElasticitySimulatorV2() {
   const [filter, setFilter] = useState("");
   const [segF, setSegF] = useState("all");
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const qp = new URLSearchParams(window.location.search || '');
+    const product = qp.get('product');
+    const fee = qp.get('fee');
+    const target = qp.get('target');
+    if (!product && !fee && !target) return;
+
+    setScenarios((prev) => {
+      const current = prev[0] || { pid: 'r_cc_basico', nf: 0.25, cl: 500000 };
+      const next = { ...current };
+      if (product && PRODUCTS.some((p) => p.id === product)) next.pid = product;
+      const parsedTarget = target !== null ? Number(target) : NaN;
+      const parsedFee = fee !== null ? Number(fee) : NaN;
+      if (!Number.isNaN(parsedTarget)) next.nf = parsedTarget;
+      else if (!Number.isNaN(parsedFee)) next.nf = parsedFee;
+      return [next, ...prev.slice(1)];
+    });
+  }, []);
 
   function addScenario() { setScenarios((prev) => prev.concat([{ pid: "r_tc_clasica", nf: 1.40, cl: 500000 }])); setAi(scenarios.length); }
   function removeScenario(idx) { if (scenarios.length <= 1) return; setScenarios((prev) => prev.filter((_, j) => j !== idx)); setAi((v) => Math.max(0, v >= scenarios.length - 1 ? scenarios.length - 2 : v)); }
