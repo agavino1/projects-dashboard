@@ -28,7 +28,8 @@ export const projects: Project[] = [
     blockers: ['Agregar Inmobiliario.es', 'Dashboard web'],
     lastUpdated: '0 días',
     links: {
-      github: 'https://github.com/agavino1/sierra-nevada-monitor',
+      github: 'https://github.com/agavino1/sierra-nevada-dashboard',
+      landing: 'https://properties.anayalvaro.com',
       nextStep: 'Expandir portales de búsqueda',
     }
   },
@@ -44,6 +45,7 @@ export const projects: Project[] = [
     lastUpdated: '3 días',
     links: {
       github: 'https://github.com/agavino1/boatcheckpro',
+      landing: 'https://boatcheckpro.anayalvaro.com',
       nextStep: 'Publicar landing page',
     }
   },
