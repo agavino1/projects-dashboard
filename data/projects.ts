@@ -138,6 +138,62 @@ export const projects: Project[] = [
       docs: 'https://docs.google.com/drive/folders/example',
       nextStep: 'Álvaro elige libro para comenzar',
     }
+  },
+  {
+    id: 'phone-language-bot',
+    emoji: '🎓',
+    name: 'Phone Language Bot',
+    status: 'progress',
+    category: 'product',
+    progress: 20,
+    description: 'Clases de inglés automatizadas por teléfono (IVR) para inmigrantes en USA. Stack: Twilio + Claude + Node.js.',
+    blockers: ['Setup Twilio productivo', 'Definir guión pedagógico inicial'],
+    lastUpdated: '0 días',
+    links: {
+      nextStep: 'Cerrar setup Twilio y lanzar MVP controlado',
+    }
+  },
+  {
+    id: 'paella-burner',
+    emoji: '🍲',
+    name: 'Paella Burner (Gas Cooker)',
+    status: 'research',
+    category: 'product',
+    progress: 15,
+    description: 'Quemador premium exterior con auto-nivelación y protección de viento. En fase de investigación y diseño de prototipo.',
+    blockers: ['Partner de ingeniería', 'Primer diseño CAD'],
+    lastUpdated: '0 días',
+    links: {
+      nextStep: 'Definir especificaciones técnicas y validación de prototipo',
+    }
+  },
+  {
+    id: 'instagram-motivation',
+    emoji: '📱',
+    name: 'Instagram Motivación + Música',
+    status: 'progress',
+    category: 'content',
+    progress: 25,
+    description: 'Nueva cuenta de contenido motivacional con música potente. Pipeline con aprobación manual antes de publicar.',
+    blockers: ['Conectar cuenta IG', 'Definir flujo de publicación estable'],
+    lastUpdated: '0 días',
+    links: {
+      nextStep: 'Publicar primer lote (semana 1) con revisión humana',
+    }
+  },
+  {
+    id: 'disneyland-paris',
+    emoji: '🏰',
+    name: 'Disneyland Paris',
+    status: 'progress',
+    category: 'product',
+    progress: 20,
+    description: 'Proyecto Disneyland Paris (planning/ejecución) para organizar próximos pasos y seguimiento.',
+    blockers: ['Definir alcance exacto', 'Aterrizar plan operativo'],
+    lastUpdated: '0 días',
+    links: {
+      nextStep: 'Definir objetivos y entregables de la siguiente iteración',
+    }
   }
 ];
 

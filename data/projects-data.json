@@ -133,7 +133,7 @@
       "status": "progress",
       "category": "product",
       "progress": 20,
-      "description": "Clases de inglés automatizadas por teléfono (IVR) para inmigrantes en USA. Stack: Twilio + Claude + Node.js. MVP 2-4 semanas.",
+      "description": "Clases de inglés automatizadas por teléfono (IVR) para inmigrantes en USA. Stack: Twilio + Claude + Node.js.",
       "blockers": [
         "Setup Twilio productivo",
         "Definir guión pedagógico inicial"
@@ -174,8 +174,24 @@
       ],
       "lastUpdated": "0 días",
       "links": {
-        "docs": "https://projects-dashboard-720707023248.europe-west1.run.app",
         "nextStep": "Publicar primer lote (semana 1) con revisión humana"
+      }
+    },
+    {
+      "id": "disneyland-paris",
+      "emoji": "🏰",
+      "name": "Disneyland Paris",
+      "status": "progress",
+      "category": "product",
+      "progress": 20,
+      "description": "Proyecto Disneyland Paris (planning/ejecución) para organizar próximos pasos y seguimiento.",
+      "blockers": [
+        "Definir alcance exacto",
+        "Aterrizar plan operativo"
+      ],
+      "lastUpdated": "0 días",
+      "links": {
+        "nextStep": "Definir objetivos y entregables de la siguiente iteración"
       }
     }
   ],
