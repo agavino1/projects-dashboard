@@ -1,13 +1,6 @@
 {
   "projects": [
     {
-      "id": "project-landing", "emoji": "☂️", "name": "Proyecto Paraguas: Landing de Proyectos", "status": "active", "category": "infra", "progress": 50,
-      "description": "Landing dinámica con el estado de todos los proyectos y enlaces a los mismos.",
-      "links": { "landing": [{ "url": "https://projects.anayalvaro.com/", "title": "Landing" }] }, "insights": [],
-      "tasks_sebastian": ["Implementar fichas desplegables", "Añadir sección de enlaces", "Reactivar filtros"],
-      "tasks_alvaro": ["Validar el plan de mejoras v2"]
-    },
-    {
       "id": "sierra-nevada", "emoji": "🏔️", "name": "Sierra Nevada Property Monitor", "status": "active", "category": "tech", "progress": 70,
       "description": "Monitoreo automático de apartamentos en Sierra Nevada. En producción y funcionando.",
       "links": { "landing": [{ "url": "https://properties.anayalvaro.com", "title": "Landing" }], "repo": [{ "url": "https://github.com/agavino1/sierra-nevada-dashboard", "title": "GitHub" }] }, "insights": [],
