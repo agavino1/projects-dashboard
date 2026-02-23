@@ -1,0 +1,11 @@
+node_modules
+.next
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.git
+README.md
+*.md
+scripts/omniscient-discovery.js
+data/omniscient.db

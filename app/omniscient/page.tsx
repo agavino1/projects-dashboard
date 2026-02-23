@@ -83,7 +83,7 @@ export default function OmniscientDashboard() {
 
   const fetchProjects = async () => {
     try {
-      const response = await fetch('/projects-data.json');
+      const response = await fetch('/api/omniscient/projects');
       const data = await response.json();
       setProjects(data.projects || []);
       setStats(data.stats || { active: 0, progress: 0, completed: 0, research: 0 });
@@ -96,7 +96,7 @@ export default function OmniscientDashboard() {
 
   const fetchTimeline = async () => {
     try {
-      const response = await fetch('/api/timeline');
+      const response = await fetch('/api/omniscient/timeline');
       const data = await response.json();
       setActivities(data.recentActivity || []);
     } catch (error) {
@@ -290,8 +290,8 @@ export default function OmniscientDashboard() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Dashboard de Proyectos</h1>
-              <p className="text-gray-600 mt-1">Visión centralizada de todas las iniciativas · {projects.length} proyectos activos</p>
+              <h1 className="text-3xl font-bold text-gray-900">🧠 Dashboard Omnisciente</h1>
+              <p className="text-gray-600 mt-1">Todo tu trabajo en tiempo real · {projects.length} proyectos activos</p>
             </div>
             <div className="flex items-center space-x-4">
               <button
