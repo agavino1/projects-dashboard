@@ -1,117 +1,65 @@
 {
   "projects": [
     {
-      "id": "project-landing",
-      "emoji": "☂️",
-      "name": "Proyecto Paraguas: Landing de Proyectos",
-      "status": "active",
-      "category": "infra",
-      "progress": 50,
+      "id": "project-landing", "emoji": "☂️", "name": "Proyecto Paraguas: Landing de Proyectos", "status": "active", "category": "infra", "progress": 50,
       "description": "Landing dinámica con el estado de todos los proyectos y enlaces a los mismos.",
-      "lastUpdated": "0 días",
-      "activity_count": 0,
-      "links": {
-        "landing": [{ "url": "https://projects.anayalvaro.com/", "title": "Landing" }]
-      },
-      "insights": []
+      "links": { "landing": [{ "url": "https://projects.anayalvaro.com/", "title": "Landing" }] }, "insights": []
     },
     {
-      "id": "sierra-nevada",
-      "emoji": "🏔️",
-      "name": "Sierra Nevada Property Monitor",
-      "status": "active",
-      "category": "tech",
-      "progress": 70,
+      "id": "sierra-nevada", "emoji": "🏔️", "name": "Sierra Nevada Property Monitor", "status": "active", "category": "tech", "progress": 70,
       "description": "Monitoreo automático de apartamentos en Sierra Nevada. En producción y funcionando.",
-      "lastUpdated": "0 días",
-      "activity_count": 0,
-      "links": {
-        "landing": [{ "url": "https://properties.anayalvaro.com", "title": "Landing" }],
-        "repo": [{ "url": "https://github.com/agavino1/sierra-nevada-dashboard", "title": "GitHub" }]
-      },
-      "insights": []
+      "links": { "landing": [{ "url": "https://properties.anayalvaro.com", "title": "Landing" }], "repo": [{ "url": "https://github.com/agavino1/sierra-nevada-dashboard", "title": "GitHub" }] }, "insights": []
     },
     {
-      "id": "auto-income",
-      "emoji": "💰",
-      "name": "Auto Income Opportunities",
-      "status": "research",
-      "category": "strategy",
-      "progress": 40,
-      "description": "Plataforma para evaluar ideas de negocio de ingresos pasivos. Actualmente en fase de customer discovery.",
-      "lastUpdated": "0 días",
-      "activity_count": 0,
-      "links": {},
-      "insights": []
-    },
-    {
-      "id": "boatcheckpro",
-      "emoji": "🚤",
-      "name": "BoatCheckPro",
-      "status": "progress",
-      "category": "tech",
-      "progress": 30,
+      "id": "boatcheckpro", "emoji": "🚤", "name": "BoatCheckPro", "status": "progress", "category": "tech", "progress": 30,
       "description": "SaaS para inspecciones pre-compra de embarcaciones. MVP definido, pendiente de lanzar landing page.",
-      "lastUpdated": "0 días",
-      "activity_count": 0,
-      "links": {
-        "landing": [{ "url": "https://boatcheckpro.anayalvaro.com", "title": "Landing" }],
-        "repo": [{ "url": "https://github.com/agavino1/boatcheckpro", "title": "GitHub" }]
-      },
-      "insights": []
+      "links": { "landing": [{ "url": "https://boatcheckpro.anayalvaro.com", "title": "Landing" }], "repo": [{ "url": "https://github.com/agavino1/boatcheckpro", "title": "GitHub" }] }, "insights": []
     },
     {
-      "id": "am-benchmark",
-      "emoji": "📊",
-      "name": "A&M: Benchmark Automático",
-      "status": "research",
-      "category": "ai",
-      "progress": 5,
+      "id": "auto-income", "emoji": "💰", "name": "Auto Income Opportunities", "status": "research", "category": "strategy", "progress": 40,
+      "description": "Plataforma para evaluar ideas de negocio de ingresos pasivos. Actualmente en fase de customer discovery.",
+      "links": {}, "insights": []
+    },
+    {
+      "id": "am-benchmark", "emoji": "📊", "name": "A&M: Benchmark Automático", "status": "research", "category": "ai", "progress": 5,
       "description": "Herramienta de IA para análisis automatizado de competidores para Álvarez & Marsal.",
-      "lastUpdated": "0 días",
-      "activity_count": 0,
-      "links": {},
-      "insights": []
+      "links": {}, "insights": []
     },
     {
-      "id": "am-elasticity-sim",
-      "emoji": "📈",
-      "name": "A&M: Simulador Elasticidad-Precio",
-      "status": "research",
-      "category": "ai",
-      "progress": 5,
+      "id": "am-elasticity-sim", "emoji": "📈", "name": "A&M: Simulador Elasticidad-Precio", "status": "research", "category": "ai", "progress": 5,
       "description": "Herramienta de IA para simular el impacto de cambios de precio en la demanda para Álvarez & Marsal.",
-      "lastUpdated": "0 días",
-      "activity_count": 0,
-      "links": {},
-      "insights": []
+      "links": {}, "insights": []
     },
     {
-      "id": "phone-language-bot",
-      "emoji": "🎓",
-      "name": "Phone Language Bot",
-      "status": "progress",
-      "category": "product",
-      "progress": 20,
+      "id": "phone-language-bot", "emoji": "🎓", "name": "Phone Language Bot", "status": "progress", "category": "product", "progress": 20,
       "description": "Clases de inglés automatizadas por teléfono (IVR) para inmigrantes en USA. Planificando MVP.",
-      "lastUpdated": "0 días",
-      "activity_count": 0,
-      "links": {},
-      "insights": []
+      "links": {}, "insights": []
     },
     {
-      "id": "paella-burner",
-      "emoji": "🍲",
-      "name": "Paella Burner (Gas Cooker)",
-      "status": "research",
-      "category": "product",
-      "progress": 10,
+      "id": "paella-burner", "emoji": "🍲", "name": "Paella Burner (Gas Cooker)", "status": "research", "category": "product", "progress": 10,
       "description": "Quemador premium exterior con auto-nivelación y protección de viento. En fase de investigación.",
-      "lastUpdated": "0 días",
-      "activity_count": 0,
-      "links": {},
-      "insights": []
+      "links": {}, "insights": []
+    },
+    {
+      "id": "wikipedia", "emoji": "📖", "name": "Wikipedia - Álvaro Gaviño", "status": "completed", "category": "content", "progress": 90,
+      "description": "Página Wikipedia con outline biográfico completado. Esperando tu información para finalizar.",
+      "links": {}, "insights": []
+    },
+    {
+      "id": "toros-morante", "emoji": "🎫", "name": "Toros Morante Monitor", "status": "completed", "category": "tech", "progress": 100,
+      "description": "Monitor de entradas de toros Morante completamente funcional. Esperando configuración de tu token de Telegram.",
+      "links": {}, "insights": []
+    },
+    {
+      "id": "linkedin-content", "emoji": "🔗", "name": "LinkedIn BECO+IA Content", "status": "completed", "category": "content", "progress": 95,
+      "description": "Pipeline autónomo de contenido LinkedIn con posts en draft. Esperando tu aprobación para publicar.",
+      "links": {}, "insights": []
+    },
+    {
+      "id": "libros", "emoji": "📚", "name": "Libros (4 Temas)", "status": "completed", "category": "content", "progress": 80,
+      "description": "4 libros en outline (BEco, Economics, etc.). Esperando tu decisión sobre cuál empezar.",
+      "links": {}, "insights": []
     }
   ],
-  "lastSync": "2026-02-23T11:15:00.000Z"
+  "lastSync": "2026-02-23T15:35:00.000Z"
 }
