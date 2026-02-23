@@ -3,62 +3,86 @@
     {
       "id": "project-landing", "emoji": "☂️", "name": "Proyecto Paraguas: Landing de Proyectos", "status": "active", "category": "infra", "progress": 50,
       "description": "Landing dinámica con el estado de todos los proyectos y enlaces a los mismos.",
-      "links": { "landing": [{ "url": "https://projects.anayalvaro.com/", "title": "Landing" }] }, "insights": []
+      "links": { "landing": [{ "url": "https://projects.anayalvaro.com/", "title": "Landing" }] }, "insights": [],
+      "tasks_sebastian": ["Implementar fichas desplegables", "Añadir sección de enlaces", "Reactivar filtros"],
+      "tasks_alvaro": ["Validar el plan de mejoras v2"]
     },
     {
       "id": "sierra-nevada", "emoji": "🏔️", "name": "Sierra Nevada Property Monitor", "status": "active", "category": "tech", "progress": 70,
       "description": "Monitoreo automático de apartamentos en Sierra Nevada. En producción y funcionando.",
-      "links": { "landing": [{ "url": "https://properties.anayalvaro.com", "title": "Landing" }], "repo": [{ "url": "https://github.com/agavino1/sierra-nevada-dashboard", "title": "GitHub" }] }, "insights": []
+      "links": { "landing": [{ "url": "https://properties.anayalvaro.com", "title": "Landing" }], "repo": [{ "url": "https://github.com/agavino1/sierra-nevada-dashboard", "title": "GitHub" }] }, "insights": [],
+      "tasks_sebastian": ["Investigar API de Inmobiliario.es", "Diseñar mockup de dashboard web"],
+      "tasks_alvaro": ["Validar otros portales de interés"]
     },
     {
       "id": "boatcheckpro", "emoji": "🚤", "name": "BoatCheckPro", "status": "progress", "category": "tech", "progress": 30,
       "description": "SaaS para inspecciones pre-compra de embarcaciones. MVP definido, pendiente de lanzar landing page.",
-      "links": { "landing": [{ "url": "https://boatcheckpro.anayalvaro.com", "title": "Landing" }], "repo": [{ "url": "https://github.com/agavino1/boatcheckpro", "title": "GitHub" }] }, "insights": []
+      "links": { "landing": [{ "url": "https://boatcheckpro.anayalvaro.com", "title": "Landing" }], "repo": [{ "url": "https://github.com/agavino1/boatcheckpro", "title": "GitHub" }] }, "insights": [],
+      "tasks_sebastian": ["Implementar internacionalización (i18n)", "Desplegar landing page multi-idioma"],
+      "tasks_alvaro": ["Aprobar diseño final de la landing"]
     },
     {
       "id": "auto-income", "emoji": "💰", "name": "Auto Income Opportunities", "status": "research", "category": "strategy", "progress": 40,
       "description": "Plataforma para evaluar ideas de negocio de ingresos pasivos. Actualmente en fase de customer discovery.",
-      "links": {}, "insights": []
+      "links": {}, "insights": [],
+      "tasks_sebastian": ["Crear lista de 10-15 perfiles a contactar", "Preparar guion de entrevista"],
+      "tasks_alvaro": ["Validar lista de perfiles"]
     },
     {
       "id": "am-benchmark", "emoji": "📊", "name": "A&M: Benchmark Automático", "status": "research", "category": "ai", "progress": 5,
       "description": "Herramienta de IA para análisis automatizado de competidores para Álvarez & Marsal.",
-      "links": {}, "insights": []
+      "links": {}, "insights": [],
+      "tasks_sebastian": ["Definir arquitectura técnica", "Investigar fuentes de datos"],
+      "tasks_alvaro": ["Definir 2-3 competidores para prueba de concepto"]
     },
     {
       "id": "am-elasticity-sim", "emoji": "📈", "name": "A&M: Simulador Elasticidad-Precio", "status": "research", "category": "ai", "progress": 5,
       "description": "Herramienta de IA para simular el impacto de cambios de precio en la demanda para Álvarez & Marsal.",
-      "links": {}, "insights": []
+      "links": {}, "insights": [],
+      "tasks_sebastian": ["Investigar modelos econométricos", "Diseñar interfaz de usuario"],
+      "tasks_alvaro": ["Proporcionar un dataset de ejemplo"]
     },
     {
       "id": "phone-language-bot", "emoji": "🎓", "name": "Phone Language Bot", "status": "progress", "category": "product", "progress": 20,
       "description": "Clases de inglés automatizadas por teléfono (IVR) para inmigrantes en USA. Planificando MVP.",
-      "links": {}, "insights": []
+      "links": {}, "insights": [],
+      "tasks_sebastian": ["Configurar entorno de desarrollo Twilio", "Programar prototipo de flujo de llamada"],
+      "tasks_alvaro": ["Revisar borrador del guion pedagógico"]
     },
     {
       "id": "paella-burner", "emoji": "🍲", "name": "Paella Burner (Gas Cooker)", "status": "research", "category": "product", "progress": 10,
       "description": "Quemador premium exterior con auto-nivelación y protección de viento. En fase de investigación.",
-      "links": {}, "insights": []
+      "links": {}, "insights": [],
+      "tasks_sebastian": ["Preseleccionar 3 partners de ingeniería"],
+      "tasks_alvaro": ["Definir presupuesto para prototipo"]
     },
     {
       "id": "wikipedia", "emoji": "📖", "name": "Wikipedia - Álvaro Gaviño", "status": "completed", "category": "content", "progress": 90,
       "description": "Página Wikipedia con outline biográfico completado. Esperando tu información para finalizar.",
-      "links": {}, "insights": []
+      "links": {}, "insights": [],
+      "tasks_sebastian": [],
+      "tasks_alvaro": ["Rellenar formulario con información biográfica"]
     },
     {
       "id": "toros-morante", "emoji": "🎫", "name": "Toros Morante Monitor", "status": "completed", "category": "tech", "progress": 100,
       "description": "Monitor de entradas de toros Morante completamente funcional. Esperando configuración de tu token de Telegram.",
-      "links": {}, "insights": []
+      "links": {}, "insights": [],
+      "tasks_sebastian": [],
+      "tasks_alvaro": ["Configurar token del bot de Telegram"]
     },
     {
       "id": "linkedin-content", "emoji": "🔗", "name": "LinkedIn BECO+IA Content", "status": "completed", "category": "content", "progress": 95,
       "description": "Pipeline autónomo de contenido LinkedIn con posts en draft. Esperando tu aprobación para publicar.",
-      "links": {}, "insights": []
+      "links": {}, "insights": [],
+      "tasks_sebastian": ["Enviar primer borrador para aprobación"],
+      "tasks_alvaro": ["Aprobar primer lote de posts"]
     },
     {
       "id": "libros", "emoji": "📚", "name": "Libros (4 Temas)", "status": "completed", "category": "content", "progress": 80,
       "description": "4 libros en outline (BEco, Economics, etc.). Esperando tu decisión sobre cuál empezar.",
-      "links": {}, "insights": []
+      "links": {}, "insights": [],
+      "tasks_sebastian": ["Preparar análisis de herramientas de escritura"],
+      "tasks_alvaro": ["Elegir el primer libro para empezar"]
     },
     {
       "id": "paper-trading-bot",
@@ -69,8 +93,10 @@
       "progress": 5,
       "description": "Bot para simular estrategias de trading sin dinero real. Objetivo: probar y validar algoritmos de inversión.",
       "links": {},
-      "insights": []
+      "insights": [],
+      "tasks_sebastian": ["Investigar APIs de datos de mercado", "Diseñar arquitectura del bot"],
+      "tasks_alvaro": ["Definir mercado y estrategia inicial"]
     }
   ],
-  "lastSync": "2026-02-23T15:45:00.000Z"
+  "lastSync": "2026-02-23T16:00:00.000Z"
 }
