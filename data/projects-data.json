@@ -59,7 +59,18 @@
       "id": "libros", "emoji": "📚", "name": "Libros (4 Temas)", "status": "completed", "category": "content", "progress": 80,
       "description": "4 libros en outline (BEco, Economics, etc.). Esperando tu decisión sobre cuál empezar.",
       "links": {}, "insights": []
+    },
+    {
+      "id": "paper-trading-bot",
+      "emoji": "📈",
+      "name": "Paper Trading Bot",
+      "status": "research",
+      "category": "ai",
+      "progress": 5,
+      "description": "Bot para simular estrategias de trading sin dinero real. Objetivo: probar y validar algoritmos de inversión.",
+      "links": {},
+      "insights": []
     }
   ],
-  "lastSync": "2026-02-23T15:35:00.000Z"
+  "lastSync": "2026-02-23T15:45:00.000Z"
 }
