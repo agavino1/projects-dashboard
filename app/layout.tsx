@@ -3,9 +3,10 @@ import './globals.css';
 import ClientLayout from '@/components/ClientLayout';
 
 export const metadata: Metadata = {
-  title: 'RIS — Dashboard de Proyectos',
-  description: 'Revenue Improvement Solutions — Dashboard de Proyectos',
-  keywords: ['proyectos', 'dashboard', 'RIS'],
+  title: 'Dashboard de Proyectos | Sebas & Alvaro',
+  description: 'Dashboard de Proyectos — Sebas (sub-Sebas) & Alvaro',
+  keywords: ['proyectos', 'dashboard'],
+  icons: { icon: '/favicon.svg' },
 };
 
 export default function RootLayout({
