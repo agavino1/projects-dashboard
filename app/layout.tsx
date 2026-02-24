@@ -3,9 +3,9 @@ import './globals.css';
 import ClientLayout from '@/components/ClientLayout';
 
 export const metadata: Metadata = {
-  title: 'Proyectos de Álvaro - Dashboard Interactivo',
-  description: 'Vista completa del estado de todos los proyectos de Álvaro Gaviño González',
-  keywords: ['proyectos', 'portfolio', 'dashboard', 'álvaro gaviño'],
+  title: 'RIS — Dashboard de Proyectos',
+  description: 'Revenue Improvement Solutions — Dashboard de Proyectos',
+  keywords: ['proyectos', 'dashboard', 'RIS'],
 };
 
 export default function RootLayout({
