@@ -372,7 +372,7 @@ export default function DashboardPage() {
 
         {/* Footer */}
         <div style={{ textAlign: 'center', padding: '24px 0 14px', fontSize: 11, color: '#3D4750', borderTop: '1px solid #1B3A4D', marginTop: 24 }}>
-          Dashboard de Proyectos · Sebas & Alvaro · Feb 2026
+          Dashboard de Proyectos · Feb 2026
         </div>
       </div>
     </div>
