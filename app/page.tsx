@@ -100,7 +100,35 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
       {/* Expanded section */}
       {isExpanded && (
-        <div className="border-t border-gray-200 p-6">
+        <div className="border-t border-gray-200 p-6 space-y-6">
+          {/* Links */}
+          {(project.links?.landing?.length || project.links?.repo?.length || project.links?.docs?.length) ? (
+            <div>
+              <h4 className="font-bold text-sm mb-2 text-gray-800">Enlaces</h4>
+              <div className="flex flex-wrap gap-2">
+                {project.links.landing?.map((link, i) => (
+                  <a key={`landing-${i}`} href={link.url} target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100 transition-colors">
+                    <Globe size={14} /> {link.title || 'Landing'}
+                  </a>
+                ))}
+                {project.links.repo?.map((link, i) => (
+                  <a key={`repo-${i}`} href={link.url} target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-gray-50 text-gray-700 border border-gray-200 hover:bg-gray-100 transition-colors">
+                    <Github size={14} /> {link.title || 'Repo'}
+                  </a>
+                ))}
+                {project.links.docs?.map((link, i) => (
+                  <a key={`docs-${i}`} href={link.url} target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-green-50 text-green-700 border border-green-200 hover:bg-green-100 transition-colors">
+                    <FileText size={14} /> {link.title || 'Docs'}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ) : null}
+
+          {/* Tasks */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <h4 className="font-bold text-sm mb-2 text-gray-800">Tareas (Sebastián)</h4>
@@ -128,6 +156,7 @@ export default function DashboardPage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [stats, setStats] = useState<ProjectStats>({ active: 0, progress: 0, completed: 0, research: 0 });
   const [loading, setLoading] = useState(true);
+  const [activeFilter, setActiveFilter] = useState<string>('all');
 
   useEffect(() => {
     fetchProjects();
@@ -188,9 +217,34 @@ export default function DashboardPage() {
           </div>
         </div>
 
+      {/* Filters */}
+      <div className="flex flex-wrap gap-2 mb-8">
+        {[
+          { key: 'all', label: 'Todos', color: 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200' },
+          { key: 'active', label: '🟢 Activos', color: 'bg-green-50 text-green-700 border-green-300 hover:bg-green-100' },
+          { key: 'progress', label: '🟡 En Progreso', color: 'bg-yellow-50 text-yellow-700 border-yellow-300 hover:bg-yellow-100' },
+          { key: 'research', label: '🔵 Research', color: 'bg-blue-50 text-blue-700 border-blue-300 hover:bg-blue-100' },
+          { key: 'completed', label: '✅ Completados', color: 'bg-purple-50 text-purple-700 border-purple-300 hover:bg-purple-100' },
+        ].map(filter => (
+          <button
+            key={filter.key}
+            onClick={() => setActiveFilter(filter.key)}
+            className={`px-4 py-2 rounded-lg text-sm font-medium border transition-all ${
+              activeFilter === filter.key
+                ? 'ring-2 ring-offset-1 ring-blue-500 shadow-md ' + filter.color
+                : filter.color + ' opacity-70'
+            }`}
+          >
+            {filter.label}
+          </button>
+        ))}
+      </div>
+
       {/* Content */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map(p => <ProjectCard key={p.id} project={p} />)}
+        {projects
+          .filter(p => activeFilter === 'all' || p.status === activeFilter)
+          .map(p => <ProjectCard key={p.id} project={p} />)}
       </div>
     </div>
   );
