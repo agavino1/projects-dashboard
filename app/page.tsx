@@ -171,7 +171,7 @@ export default function DashboardPage() {
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <div className="bg-white rounded-xl p-6 shadow-lg border">
-              <p className="text-green-600 text-sm font-medium">ACTIVOS (G)</p>
+              <p className="text-green-600 text-sm font-medium">Activos</p>
               <p className="text-2xl font-bold text-gray-900">{stats.active}</p>
           </div>
           <div className="bg-white rounded-xl p-6 shadow-lg border">
