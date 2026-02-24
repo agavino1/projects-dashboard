@@ -9,47 +9,105 @@
       "progress": 70,
       "description": "Monitoreo automático de apartamentos en Sierra Nevada. En producción y funcionando.",
       "links": {
-        "landing": [{"url": "https://properties.anayalvaro.com", "title": "Landing"}],
-        "repo": [{"url": "https://github.com/agavino1/sierra-nevada-dashboard", "title": "Dashboard"}],
-        "docs": [{"url": "https://github.com/agavino1/boatcheck-pro-backend/tree/main/sierra-nevada-monitor", "title": "Código Monitor"}]
+        "landing": [
+          {
+            "url": "https://properties.anayalvaro.com",
+            "title": "Landing"
+          }
+        ],
+        "repo": [
+          {
+            "url": "https://github.com/agavino1/sierra-nevada-dashboard",
+            "title": "Dashboard"
+          }
+        ],
+        "docs": [
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/tree/main/sierra-nevada-monitor",
+            "title": "Código Monitor"
+          }
+        ]
       },
       "insights": [],
-      "tasks_sebastian": ["Investigar API de Inmobiliario.es", "Diseñar mockup de dashboard web"],
-      "tasks_alvaro": ["Validar otros portales de interés"]
+      "tasks_sebastian": [
+        "Investigar API de Inmobiliario.es",
+        "Diseñar mockup de dashboard web"
+      ],
+      "tasks_alvaro": [
+        "Validar otros portales de interés"
+      ]
     },
     {
       "id": "am-benchmark",
       "emoji": "📊",
       "name": "A&M: Benchmark Competitivo",
-      "status": "progress",
+      "status": "active",
       "category": "ai",
-      "progress": 65,
+      "progress": 85,
       "description": "Dashboard interactivo para A&M que compara tarifas y productos de 10 bancos chilenos. Código avanzado con motor de scoring y detección de oportunidades.",
       "links": {
         "docs": [
-          {"url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/inbox/benchmark-chile/benchmark-chile/HANDOFF_SEBAS.md", "title": "Handoff & Specs"},
-          {"url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/inbox/benchmark-chile/benchmark-chile/README.md", "title": "README"}
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/inbox/benchmark-chile/benchmark-chile/HANDOFF_SEBAS.md",
+            "title": "Handoff & Specs"
+          },
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/inbox/benchmark-chile/benchmark-chile/README.md",
+            "title": "README"
+          }
         ],
-        "repo": [{"url": "https://github.com/agavino1/boatcheck-pro-backend/tree/main/inbox/benchmark-chile/benchmark-chile", "title": "Código Fuente"}]
+        "repo": [
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/tree/main/inbox/benchmark-chile/benchmark-chile",
+            "title": "Código Fuente"
+          }
+        ],
+        "landing": [
+          {
+            "url": "https://projects.anayalvaro.com/benchmark",
+            "title": "Benchmark Live"
+          }
+        ]
       },
       "insights": [],
-      "tasks_sebastian": ["Integrar benchmark en nuevo dashboard", "Migrar datos de JSON a base de datos"],
-      "tasks_alvaro": ["Revisar datos de competidores chilenos"]
+      "tasks_sebastian": [
+        "Integrar benchmark en nuevo dashboard",
+        "Migrar datos de JSON a base de datos"
+      ],
+      "tasks_alvaro": [
+        "Revisar datos de competidores chilenos"
+      ]
     },
     {
       "id": "am-elasticity-sim",
       "emoji": "📈",
       "name": "A&M: Simulador Elasticidad-Precio",
-      "status": "progress",
+      "status": "active",
       "category": "ai",
-      "progress": 60,
+      "progress": 80,
       "description": "Herramienta interactiva para A&M que simula impacto en ingresos y churn al modificar precios de 40+ productos bancarios. Cita papers del BCE y BIS.",
       "links": {
-        "repo": [{"url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/inbox/uploads_20260222/elasticity_simulator_v2.jsx", "title": "Código (v2.jsx)"}]
+        "repo": [
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/inbox/uploads_20260222/elasticity_simulator_v2.jsx",
+            "title": "Código (v2.jsx)"
+          }
+        ],
+        "landing": [
+          {
+            "url": "https://projects.anayalvaro.com/simulator",
+            "title": "Simulador Live"
+          }
+        ]
       },
       "insights": [],
-      "tasks_sebastian": ["Integrar simulador en dashboard de proyectos", "Añadir persistencia de escenarios"],
-      "tasks_alvaro": ["Validar datos de elasticidad por producto"]
+      "tasks_sebastian": [
+        "Integrar simulador en dashboard de proyectos",
+        "Añadir persistencia de escenarios"
+      ],
+      "tasks_alvaro": [
+        "Validar datos de elasticidad por producto"
+      ]
     },
     {
       "id": "boatcheckpro",
@@ -60,12 +118,27 @@
       "progress": 60,
       "description": "SaaS para inspecciones pre-compra de embarcaciones. MVP definido, pendiente de lanzar landing page.",
       "links": {
-        "landing": [{"url": "https://boatcheckpro.anayalvaro.com", "title": "Landing"}],
-        "repo": [{"url": "https://github.com/agavino1/boatcheckpro", "title": "GitHub"}]
+        "landing": [
+          {
+            "url": "https://boatcheckpro.anayalvaro.com",
+            "title": "Landing"
+          }
+        ],
+        "repo": [
+          {
+            "url": "https://github.com/agavino1/boatcheckpro",
+            "title": "GitHub"
+          }
+        ]
       },
       "insights": [],
-      "tasks_sebastian": ["Implementar internacionalización (i18n)", "Desplegar landing page multi-idioma"],
-      "tasks_alvaro": ["Aprobar diseño final de la landing"]
+      "tasks_sebastian": [
+        "Implementar internacionalización (i18n)",
+        "Desplegar landing page multi-idioma"
+      ],
+      "tasks_alvaro": [
+        "Aprobar diseño final de la landing"
+      ]
     },
     {
       "id": "toros-morante",
@@ -76,15 +149,28 @@
       "progress": 90,
       "description": "Monitor de entradas de toros Morante completamente funcional. Esperando configuración de token de Telegram.",
       "links": {
-        "repo": [{"url": "https://github.com/agavino1/boatcheck-pro-backend/tree/main/toros-morante-monitor", "title": "Código"}],
+        "repo": [
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/tree/main/toros-morante-monitor",
+            "title": "Código"
+          }
+        ],
         "docs": [
-          {"url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/toros-morante-monitor/ARCHITECTURE.md", "title": "Arquitectura"},
-          {"url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/toros-morante-monitor/INSTRUCCIONES.md", "title": "Instrucciones"}
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/toros-morante-monitor/ARCHITECTURE.md",
+            "title": "Arquitectura"
+          },
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/toros-morante-monitor/INSTRUCCIONES.md",
+            "title": "Instrucciones"
+          }
         ]
       },
       "insights": [],
       "tasks_sebastian": [],
-      "tasks_alvaro": ["Configurar token del bot de Telegram"]
+      "tasks_alvaro": [
+        "Configurar token del bot de Telegram"
+      ]
     },
     {
       "id": "pet-business",
@@ -96,13 +182,24 @@
       "description": "Exploración de negocio semi-pasivo en mascotas (premium/lujo) vía dropshipping o intermediación.",
       "links": {
         "docs": [
-          {"url": "https://github.com/agavino1/boatcheck-pro-backend/tree/main/pet-food-research", "title": "Research Comida"},
-          {"url": "https://github.com/agavino1/boatcheck-pro-backend/tree/main/pet-luxe-mvp", "title": "MVP Landing"}
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/tree/main/pet-food-research",
+            "title": "Research Comida"
+          },
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/tree/main/pet-luxe-mvp",
+            "title": "MVP Landing"
+          }
         ]
       },
       "insights": [],
-      "tasks_sebastian": ["Análisis de proveedores dropshipping", "Crear landing de validación"],
-      "tasks_alvaro": ["Definir nicho específico de producto"]
+      "tasks_sebastian": [
+        "Análisis de proveedores dropshipping",
+        "Crear landing de validación"
+      ],
+      "tasks_alvaro": [
+        "Definir nicho específico de producto"
+      ]
     },
     {
       "id": "auto-income",
@@ -114,14 +211,28 @@
       "description": "Análisis de ideas de ingresos pasivos. Affiliate marketing en nicho es la idea más prometedora.",
       "links": {
         "docs": [
-          {"url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/auto-income-opportunities/EXECUTIVE_SUMMARY.md", "title": "Resumen Ejecutivo"},
-          {"url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/auto-income-opportunities/DECISION_FRAMEWORK.md", "title": "Framework Decisión"},
-          {"url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/auto-income-opportunities/ANALYSIS.md", "title": "Análisis Completo"}
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/auto-income-opportunities/EXECUTIVE_SUMMARY.md",
+            "title": "Resumen Ejecutivo"
+          },
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/auto-income-opportunities/DECISION_FRAMEWORK.md",
+            "title": "Framework Decisión"
+          },
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/auto-income-opportunities/ANALYSIS.md",
+            "title": "Análisis Completo"
+          }
         ]
       },
       "insights": [],
-      "tasks_sebastian": ["Crear lista de 10-15 perfiles a contactar", "Preparar guion de entrevista"],
-      "tasks_alvaro": ["Validar lista de perfiles"]
+      "tasks_sebastian": [
+        "Crear lista de 10-15 perfiles a contactar",
+        "Preparar guion de entrevista"
+      ],
+      "tasks_alvaro": [
+        "Validar lista de perfiles"
+      ]
     },
     {
       "id": "paper-trading-bot",
@@ -132,12 +243,27 @@
       "progress": 20,
       "description": "Bot para simular estrategias de trading sin dinero real. En desarrollo.",
       "links": {
-        "repo": [{"url": "https://github.com/agavino1/boatcheck-pro-backend/tree/main/paper-trading", "title": "Código"}],
-        "docs": [{"url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/paper-trading/README.md", "title": "README"}]
+        "repo": [
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/tree/main/paper-trading",
+            "title": "Código"
+          }
+        ],
+        "docs": [
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/paper-trading/README.md",
+            "title": "README"
+          }
+        ]
       },
       "insights": [],
-      "tasks_sebastian": ["Investigar APIs de datos de mercado", "Diseñar arquitectura del bot"],
-      "tasks_alvaro": ["Definir mercado y estrategia inicial"]
+      "tasks_sebastian": [
+        "Investigar APIs de datos de mercado",
+        "Diseñar arquitectura del bot"
+      ],
+      "tasks_alvaro": [
+        "Definir mercado y estrategia inicial"
+      ]
     },
     {
       "id": "paella-burner",
@@ -149,13 +275,23 @@
       "description": "Quemador premium exterior con auto-nivelación y protección de viento. En fase de investigación.",
       "links": {
         "docs": [
-          {"url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/paella-burner/SPECIFICATIONS.md", "title": "Especificaciones"},
-          {"url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/paella-burner/README.md", "title": "README"}
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/paella-burner/SPECIFICATIONS.md",
+            "title": "Especificaciones"
+          },
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/paella-burner/README.md",
+            "title": "README"
+          }
         ]
       },
       "insights": [],
-      "tasks_sebastian": ["Preseleccionar 3 partners de ingeniería"],
-      "tasks_alvaro": ["Definir presupuesto para prototipo"]
+      "tasks_sebastian": [
+        "Preseleccionar 3 partners de ingeniería"
+      ],
+      "tasks_alvaro": [
+        "Definir presupuesto para prototipo"
+      ]
     },
     {
       "id": "rapid-cooling",
@@ -167,13 +303,23 @@
       "description": "Investigación académica sobre tecnologías de enfriamiento rápido. Paper en borrador.",
       "links": {
         "docs": [
-          {"url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/rapid-cooling-research/PAPER_DRAFT.md", "title": "Borrador Paper"},
-          {"url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/rapid-cooling-research/README.md", "title": "README"}
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/rapid-cooling-research/PAPER_DRAFT.md",
+            "title": "Borrador Paper"
+          },
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/rapid-cooling-research/README.md",
+            "title": "README"
+          }
         ]
       },
       "insights": [],
-      "tasks_sebastian": ["Finalizar borrador del paper"],
-      "tasks_alvaro": ["Revisar y aprobar paper"]
+      "tasks_sebastian": [
+        "Finalizar borrador del paper"
+      ],
+      "tasks_alvaro": [
+        "Revisar y aprobar paper"
+      ]
     },
     {
       "id": "wedding-shield",
@@ -184,11 +330,20 @@
       "progress": 20,
       "description": "Servicio anti-intrusos para bodas y eventos privados en Madrid. Estrategia y precios definidos.",
       "links": {
-        "docs": [{"url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/wedding-security-monitor/STRATEGY.md", "title": "Estrategia"}]
+        "docs": [
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/wedding-security-monitor/STRATEGY.md",
+            "title": "Estrategia"
+          }
+        ]
       },
       "insights": [],
-      "tasks_sebastian": ["Diseñar landing page del servicio"],
-      "tasks_alvaro": ["Validar pricing con contactos del sector"]
+      "tasks_sebastian": [
+        "Diseñar landing page del servicio"
+      ],
+      "tasks_alvaro": [
+        "Validar pricing con contactos del sector"
+      ]
     },
     {
       "id": "libros",
@@ -200,13 +355,23 @@
       "description": "Sistema industrializado para escribir 4 libros y tesis doctoral. Outlines y plantillas listos.",
       "links": {
         "docs": [
-          {"url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/books-system/WRITING_SYSTEM.md", "title": "Sistema de Escritura"},
-          {"url": "https://github.com/agavino1/boatcheck-pro-backend/tree/main/books", "title": "Borradores Libros"}
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/books-system/WRITING_SYSTEM.md",
+            "title": "Sistema de Escritura"
+          },
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/tree/main/books",
+            "title": "Borradores Libros"
+          }
         ]
       },
       "insights": [],
-      "tasks_sebastian": ["Preparar análisis de herramientas de escritura"],
-      "tasks_alvaro": ["Elegir el primer libro para empezar"]
+      "tasks_sebastian": [
+        "Preparar análisis de herramientas de escritura"
+      ],
+      "tasks_alvaro": [
+        "Elegir el primer libro para empezar"
+      ]
     },
     {
       "id": "linkedin-content",
@@ -218,13 +383,23 @@
       "description": "Pipeline de contenido sobre Behavioral Economics + IA. 10 borradores listos para aprobación.",
       "links": {
         "docs": [
-          {"url": "https://github.com/agavino1/boatcheck-pro-backend/tree/main/linkedin-beco-ia-content", "title": "Borradores Posts"},
-          {"url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/linkedin-beco-ia-content/README.md", "title": "README"}
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/tree/main/linkedin-beco-ia-content",
+            "title": "Borradores Posts"
+          },
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/linkedin-beco-ia-content/README.md",
+            "title": "README"
+          }
         ]
       },
       "insights": [],
-      "tasks_sebastian": ["Enviar primer borrador para aprobación"],
-      "tasks_alvaro": ["Aprobar primer lote de posts"]
+      "tasks_sebastian": [
+        "Enviar primer borrador para aprobación"
+      ],
+      "tasks_alvaro": [
+        "Aprobar primer lote de posts"
+      ]
     },
     {
       "id": "instagram",
@@ -236,13 +411,23 @@
       "description": "Cuenta de contenido motivacional con reels y stories de alta energía. Setup inicial completado.",
       "links": {
         "docs": [
-          {"url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/instagram-motivation-music/PROJECT.md", "title": "Plan Proyecto"},
-          {"url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/instagram-motivation-music/CONTENT_CALENDAR_WEEK1.md", "title": "Calendario Semana 1"}
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/instagram-motivation-music/PROJECT.md",
+            "title": "Plan Proyecto"
+          },
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/instagram-motivation-music/CONTENT_CALENDAR_WEEK1.md",
+            "title": "Calendario Semana 1"
+          }
         ]
       },
       "insights": [],
-      "tasks_sebastian": ["Conectar cuenta de Instagram"],
-      "tasks_alvaro": ["Aprobar calendario de contenido"]
+      "tasks_sebastian": [
+        "Conectar cuenta de Instagram"
+      ],
+      "tasks_alvaro": [
+        "Aprobar calendario de contenido"
+      ]
     },
     {
       "id": "wikipedia",
@@ -253,11 +438,18 @@
       "progress": 60,
       "description": "Página Wikipedia con outline biográfico completado. Esperando información para finalizar.",
       "links": {
-        "docs": [{"url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/wikipedia-profile/STATUS.md", "title": "Estado y Outline"}]
+        "docs": [
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/wikipedia-profile/STATUS.md",
+            "title": "Estado y Outline"
+          }
+        ]
       },
       "insights": [],
       "tasks_sebastian": [],
-      "tasks_alvaro": ["Rellenar formulario con información biográfica"]
+      "tasks_alvaro": [
+        "Rellenar formulario con información biográfica"
+      ]
     },
     {
       "id": "phone-language-bot",
@@ -268,12 +460,24 @@
       "progress": 30,
       "description": "Clases de inglés automatizadas por teléfono para inmigrantes en USA. CONGELADO - no convence actualmente.",
       "links": {
-        "repo": [{"url": "https://github.com/agavino1/boatcheck-pro-backend/tree/main/phone-language-bot", "title": "Código"}],
-        "docs": [{"url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/phone-language-bot/README.md", "title": "README"}]
+        "repo": [
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/tree/main/phone-language-bot",
+            "title": "Código"
+          }
+        ],
+        "docs": [
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/phone-language-bot/README.md",
+            "title": "README"
+          }
+        ]
       },
       "insights": [],
       "tasks_sebastian": [],
-      "tasks_alvaro": ["Decidir si reactivar o archivar"]
+      "tasks_alvaro": [
+        "Decidir si reactivar o archivar"
+      ]
     },
     {
       "id": "disneyland-paris",
@@ -284,11 +488,21 @@
       "progress": 10,
       "description": "Planificación de viaje familiar épico a Disneyland Paris en agosto 2026. Juan (12), Dani (10), Carlota (8).",
       "links": {
-        "docs": [{"url": "https://github.com/agavino1/boatcheck-pro-backend/tree/main/disneyland-paris", "title": "Planificación"}]
+        "docs": [
+          {
+            "url": "https://github.com/agavino1/boatcheck-pro-backend/tree/main/disneyland-paris",
+            "title": "Planificación"
+          }
+        ]
       },
       "insights": [],
-      "tasks_sebastian": ["Buscar mejores fechas y ofertas para 4 días", "Comparar opciones de hoteles"],
-      "tasks_alvaro": ["Definir fechas preferidas y presupuesto"]
+      "tasks_sebastian": [
+        "Buscar mejores fechas y ofertas para 4 días",
+        "Comparar opciones de hoteles"
+      ],
+      "tasks_alvaro": [
+        "Definir fechas preferidas y presupuesto"
+      ]
     }
   ],
   "lastSync": "2026-02-24T15:01:00.000Z"
