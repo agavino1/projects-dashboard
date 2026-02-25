@@ -1,6 +1,25 @@
 {
   "projects": [
     {
+      "id": "armario-de-la-tele",
+      "emoji": "📺",
+      "name": "El Armario de la Tele",
+      "status": "research",
+      "category": "product",
+      "progress": 5,
+      "description": "Observatorio de tendencias de moda en series y películas para vender esas prendas. Incluirá sistema de detección, scraping y plataforma de afiliación/dropshipping.",
+      "links": {},
+      "tasks_sebastian": [
+        "Definir arquitectura de la BBDD de tendencias",
+        "Investigar APIs de TV/películas (TMDB, etc.)",
+        "Análisis de competidores"
+      ],
+      "tasks_alvaro": [
+        "Definir series/películas para el piloto inicial",
+        "Validar modelo de negocio (afiliación vs dropshipping)"
+      ]
+    },
+    {
       "id": "ris-2-pre-implementation",
       "emoji": "🧪",
       "name": "Pre-Implementation Testing",
