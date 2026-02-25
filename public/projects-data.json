@@ -1,37 +1,6 @@
 {
   "projects": [
     {
-      "id": "ris-1-benchmarks",
-      "emoji": "📊",
-      "name": "Automated Benchmarks + Regulatory Intelligence",
-      "ris_number": "Module 1",
-      "ris_subtitle": "Eficiencia en análisis competitivo + filtro regulatorio",
-      "status": "active",
-      "category": "ris",
-      "progress": 85,
-      "description": "Dashboard interactivo que compara tarifas y productos de 10 bancos chilenos. Motor de scoring automático, detección de oportunidades y ranking de precios. Pendiente: integrar capa de Regulatory Intelligence.",
-      "links": {
-        "landing": [
-          {
-            "url": "https://projects.anayalvaro.com/benchmark",
-            "title": "Benchmark Live"
-          }
-        ],
-        "docs": [
-          {
-            "url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/inbox/benchmark-chile/benchmark-chile/HANDOFF_SEBAS.md",
-            "title": "Handoff & Specs"
-          }
-        ]
-      },
-      "tasks_sebastian": [
-        "Integrar capa de Regulatory Intelligence"
-      ],
-      "tasks_alvaro": [
-        "Validar fuentes regulatorias"
-      ]
-    },
-    {
       "id": "ris-2-pre-implementation",
       "emoji": "🧪",
       "name": "Pre-Implementation Testing",
@@ -65,37 +34,6 @@
       ],
       "tasks_alvaro": [
         "Definir reglas heurísticas iniciales"
-      ]
-    },
-    {
-      "id": "ris-4-elasticity",
-      "emoji": "📈",
-      "name": "Price Elasticity Analysis",
-      "ris_number": "Module 4",
-      "ris_subtitle": "IA predictiva sobre sensibilidad a precios",
-      "status": "active",
-      "category": "ris",
-      "progress": 80,
-      "description": "Simulador interactivo de elasticidad-precio para 40+ productos bancarios. Modela impacto en ingresos, churn y cross-sell perdido. Basado en papers del BCE y BIS.",
-      "links": {
-        "landing": [
-          {
-            "url": "https://projects.anayalvaro.com/simulator",
-            "title": "Simulador Live"
-          }
-        ],
-        "repo": [
-          {
-            "url": "https://github.com/agavino1/boatcheck-pro-backend/blob/main/inbox/uploads_20260222/elasticity_simulator_v2.jsx",
-            "title": "Código v2"
-          }
-        ]
-      },
-      "tasks_sebastian": [
-        "Añadir persistencia de escenarios"
-      ],
-      "tasks_alvaro": [
-        "Validar datos de elasticidad"
       ]
     },
     {
